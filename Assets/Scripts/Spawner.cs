@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _template;
+    [SerializeField] private Enemy _template;
     [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private float _secondsBetweenSpawn;
+    [SerializeField] private float _delay;
 
-    private float _elapsedTime = 0;
+    private Coroutine CreateEnemyJob;
 
-    void Update()
+    private void Start()
     {
-        _elapsedTime += Time.deltaTime;
-        int spawnPointNumber = Random.Range(0, _spawnPoints.Length);
+        CreateEnemyJob = StartCoroutine(CreateEnemy());
+    }
 
-        if(_elapsedTime >= _secondsBetweenSpawn)
+    private IEnumerator CreateEnemy()
+    {
+        bool isWorking = true;
+
+        while (isWorking)
         {
-            _elapsedTime = 0;
+            int spawnPointNumber = Random.Range(0, _spawnPoints.Length);
             Instantiate(_template, _spawnPoints[spawnPointNumber].position, Quaternion.identity);
+            yield return new WaitForSeconds(_delay);
         }
     }
 }
