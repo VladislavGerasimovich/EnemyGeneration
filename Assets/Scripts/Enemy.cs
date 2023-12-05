@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _secondsToDeath;
+    private int _directionX;
+    private int _directionY;
 
-    private float _elapsedTime = 0;
-    
     private void Update()
     {
-        _elapsedTime += Time.deltaTime;
-
-        if(_elapsedTime >= _secondsToDeath)
-        {
-            Die();
-        }
+        transform.Translate(_directionX * Time.deltaTime, _directionY * Time.deltaTime, 0);
     }
 
-    private void Die()
+    public void Init(int directionX, int directionY)
     {
-        Destroy(gameObject);
+        _directionX = directionX;
+        _directionY = directionY;
     }
 }
