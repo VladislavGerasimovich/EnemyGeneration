@@ -6,13 +6,16 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform _target;
 
-    private float _speed = 1f;
+    private float _speed = 1.5f;
 
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
+    }
 
-        if(transform.position == _target.position)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<Target>(out Target target))
         {
             Destroy(gameObject);
         }
