@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private int _directionX;
-    private int _directionY;
+    private float _speed = 1f;
+    private Transform _target;
 
     private void Update()
     {
-        transform.Translate(_directionX * Time.deltaTime, _directionY * Time.deltaTime, 0);
+        Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);
+
+        if(transform.position == _target.position)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    public void Init(int directionX, int directionY)
+    public void Init(Transform target)
     {
-        _directionX = directionX;
-        _directionY = directionY;
+        _target = target;
     }
 }
