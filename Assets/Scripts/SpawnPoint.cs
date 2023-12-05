@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour
 {
     [SerializeField] private Enemy _template;
+
     private Transform _target;
 
     private void Start()
@@ -16,6 +17,5 @@ public class SpawnPoint : MonoBehaviour
     {
         Enemy enemy = Instantiate(_template, transform.position, Quaternion.identity);
         enemy.Init(_target);
-        Debug.Log(_template);
     }
 }

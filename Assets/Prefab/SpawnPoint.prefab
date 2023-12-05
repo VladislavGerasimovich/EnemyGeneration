@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0861e978ed09de54699d590b005b6b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _template: {fileID: -7918311130869048500, guid: 264d438d865899b4a87a760559ebe400, type: 3}
+  _template: {fileID: -1709401571551172066, guid: 264d438d865899b4a87a760559ebe400, type: 3}
 --- !u!1001 &9179574618146254594
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ public class Spawner : MonoBehaviour
         {
             int spawnPointNumber = Random.Range(0, _spawnPoints.Length);
             _spawnPoints[spawnPointNumber].CreateEnemy();
+
             yield return _wait;
         }
     }
